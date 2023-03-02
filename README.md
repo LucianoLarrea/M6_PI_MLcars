@@ -1,147 +1,65 @@
-# M6_PI_MLcars
-Proyecto Integrador 1 Modulo 6 Henry
 
 <p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
 
-# <h1 align=center> **PROYECTO INTEGRADOR Nº1** </h1>
+# <h1 align=center> **PROYECTO INTEGRADOR M6** </h1>
 
 # <h1 align=center>**`MERCADO AUTOMOTOR`**</h1>
 
 <p align="center">
 <img src="https://www.rionegro.com.ar/wp-content/uploads/2022/01/digitalizacion-en-la-industria-automotriz-G.jpg"  height=300>
 </p>
-
-¡Bienvenidos al primer proyecto individual de la etapa de labs! En esta ocasión, deberán hacer un trabajo situándose en el rol de un ***MLOps Engineer***.  
-
+ 
 <hr>  
 
-## **Descripción del problema (Contexto y rol a desarrollar)**
+## **Clasificación y precio de los vehículos**
 
-## Contexto
+## 1. Introducción
 
-Tienes tu modelo de recomendación entrenado dando unas buenas métricas :smirk:, y ahora, cómo lo llevas al mundo real? :eyes:
+## 2. Preparación de datos
+### Descripción de los datos
+Los datos recopilados constan de información de 1000 vehículos, incluyendo su precio de venta, características técnicas como la marca, modelo, año, tipo de combustible, capacidad de motor, entre otras. Los datos se han recopilado de varias fuentes en línea, y se han procesado para que sean coherentes y estén limpios. Los datos se encuentran en formato CSV, y se han almacenado en la carpeta "data".
 
-El ciclo de vida de un proyecto de Machine Learning debe contemplar desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML según llegan nuevos datos.
+### Procesamiento de datos
+Para poder utilizar los datos para nuestros análisis, se han realizado los siguientes procesos:
 
+### Limpieza de datos: se han eliminado las filas duplicadas y se han completado los valores faltantes.
+Selección de características: se han seleccionado las características que se consideran relevantes para nuestros análisis.
+Codificación de características categóricas: se han codificado las características categóricas en valores numéricos.
+Escalado de características: se ha utilizado la técnica de escalado para normalizar las características numéricas.
+Los datos limpios y procesados se han almacenado en la carpeta "processed_data".
 
-## Rol a desarrollar
+## 3. Modelamiento y evaluación
+### Modelos de aprendizaje automático
+Se han implementado dos modelos de aprendizaje supervisado para realizar las predicciones solicitadas por el cliente:
 
-Empezaste a trabajar como **`Data Scientist`** en una start-up que provee servicios de agregación de plataformas de streaming. El mundo es bello y vas a crear tu primer modelo de ML que soluciona un problema de negocio: un sistema de recomendación que aún no ha sido puesto en marcha! 
+**Modelo de clasificación**: se ha utilizado el algoritmo de Random Forest para clasificar los vehículos en baratos y caros, utilizando la mediana de los precios como punto de corte. Se ha utilizado la técnica de validación cruzada para evaluar la precisión del modelo.
 
-Vas a sus datos y te das cuenta que la madurez de los mismos es poca (ok, es nula :sob:): Datos sin transformar, no hay procesos automatizados para la actualización de nuevas películas o series, entre otras cosas….  haciendo tu trabajo imposible :weary:. 
+**Modelo de regresión**: se ha utilizado el algoritmo de Regresión Lineal para predecir el precio final de los vehículos. También se ha utilizado la técnica de validación cruzada para evaluar la precisión del modelo.
 
-Debes empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** (_Minimum Viable Product_) para la próxima semana! Tu cabeza va a explotar 🤯, pero al menos sabes cual es, conceptualmente, el camino que debes de seguir :exclamation:. Así que te espantas los miedos y te pones manos a la obra :muscle:
+### Evaluación de los modelos
+Se ha evaluado la precisión de los modelos utilizando la técnica de validación cruzada y se han comparado los resultados con los valores reales. Se ha utilizado la métrica de error cuadrático medio (MSE) para evaluar el rendimiento de los modelos.
 
-<p align="center">
-<img src="https://github.com/soyHenry/DS_LABS/blob/main/Proyectos/Proyectos%20Individuales/PI01/Data07_MLops_API/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=500>
-</p>
+### Resultados
+Los resultados de los modelos se han almacenado en la carpeta "results" en formato de texto plano, tal y como lo solicitó el cliente. También se han generado gráficos para visualizar los resultados de las predicciones.
 
+### Instrucciones para replicar el proyecto
+Para replicar el proyecto, se deben seguir los siguientes pasos:
 
-
-## **Propuesta de trabajo (requerimientos de aprobación)**
-
-**`Transformaciones`**:  Para este MVP no necesitas perfección, ¡necesitas rapidez! ⏩ Vas a hacer estas, ***y solo estas***, transformaciones a los datos:
-
-
-+ Generar campo **`id`**: Cada id se compondrá de la primera letra del nombre de la plataforma, seguido del show_id ya presente en los datasets (ejemplo para títulos de Amazon = **`as123`**)
-
-+ Los valores nulos del campo rating deberán reemplazarse por el string “**`G`**” (corresponde al maturity rating: “general for all audiences”
-
-+ De haber fechas, deberán tener el formato **`AAAA-mm-dd`**
-
-+ Los campos de texto deberán estar en **minúsculas**, sin excepciones
-
-+ El campo ***duration*** debe convertirse en dos campos: **`duration_int`** y **`duration_type`**. El primero será un integer y el segundo un string indicando la unidad de medición de duración: min (minutos) o season (temporadas)
-
-<br/>
-
-**`Desarrollo API`**:   Propones disponibilizar los datos de la empresa usando el framework ***FastAPI***. Las consultas que propones son las siguientes:
-
-+ Película con mayor duración con filtros opcionales de AÑO, PLATAFORMA Y TIPO DE DURACIÓN. (la función debe llamarse get_max_duration(year, platform, duration_type))
-
-+ Cantidad de películas por plataforma con un puntaje mayor a XX en determinado año (la función debe llamarse get_score_count(platform, scored, year))
-
-+ Cantidad de películas por plataforma con filtro de PLATAFORMA. (La función debe llamarse get_count_platform(platform))
-
-+ Actor que más se repite según plataforma y año. (La función debe llamarse get_actor(platform, year))
-
-
-<br/>
-
-
-**`Deployment`**: Tus compañeros cercanos han usado [Deta](https://www.deta.sh/?ref=fastapi) para hacer el deployment de aplicaciones, además, no necesita dockerizacion así que es el primer candidato que encuentras!
-
-Tambien sabes sobre [Railway](https://railway.app/) y [Render](https://render.com/docs/free#free-web-services) , aunque estos necesitan dockerizacion #Decisiones 👀
-
-<br/>
-
-**`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
-
-Ya los datos están limpios, ahora es tiempo de investigar las relaciones que hay entre las variables de los datasets, ver si hay outliers o anomalías (que no tienen que ser errores necesariamente :eyes: ), y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior.  Sabes que puedes apoyarte en librerías como _pandas profiling, sweetviz, autoviz_, entre otros y sacar de allí tus conclusiones 😉
-
-**`Sistema de recomendación`**: 
-
-Una vez que toda la data es consumible por la API ya lista para consumir para los departamentos de Analytics y de Machine Learning, y nuestro EDA bien realizado entendiendo bien los datos a los que tenemos acceso, es hora de entrenar nuestro modelo de machine learning para armar un sistema de recomendación de películas para usuarios, donde dado un id de usuario y una película, nos diga si la recomienda o no para dicho usuario. De ser posible, este sistema de recomendación debe ser deployado para tener una interfaz gráfica amigable para ser utilizada, utilizando Gradio o Deta Space para su deployment o bien con alguna solución como Streamlit o algo similar en local (tener el deployment del sistema de recomendación o una interfaz gráfica es un plus al proyecto).
-
-<br/>
-
-**`Video`**: Sabes que la documentacion es una etapa importante en cualquier trabajo 👀. Hiciste diversos procesos nuevos para la empresa y no tienes tiempo de dejar un informe con toda la informacion relevante en este momento! Pero eres recursivo 🙂, asi que grabas un video donde muestras todo lo que hiciste para mostrarselo a tu equipo y asi tod@s pueden enteder todo lo que hiciste y para que lo hiciste.
-
-<sub> **Spoiler**: El video DEBE durar no mas de ***7 minutos*** y DEBE mostrar las consultas requeridas en funcionamiento desde la API** y una breve explicacion del modelo entrenado para el sistema de recomendacion. <sub/>
-
-<br/>
-
-## **Criterios de evaluación**
-
-**`Código`**: Prolijidad de código, uso de clases y/o funciones, en caso de ser necesario, código comentado. 
-
-**`Repositorio`**: Nombres de archivo adecuados, uso de carpetas para ordenar los archivos, README.md presentando el proyecto y el trabajo realizado
-
-**`Cumplimiento`** de los requerimientos de aprobación indicados en el apartado `Propuesta de trabajo`
-
-NOTA: Recuerde entregar el link de acceso al video. Puede alojarse en YouTube, Drive o cualquier plataforma de almacenamiento. **Verificar que sea de acceso público**.
-
-<br/>
+### Descargar o clonar el repositorio en local.
+Instalar las dependencias necesarias que se encuentran en el archivo "requirements.txt".
+Ejecutar el notebook "EDA.ipynb" para realizar el análisis exploratorio de datos.
+Ejecutar el notebook "Data Preparation.ipynb" para preparar los datos para los modelos.
+Ejecutar el notebook "Modeling and Evaluation.ipynb" para implementar los modelos de aprendizaje automático y generar los resultados.
+Verificar que los resultados generados se encuentran en la carpeta "results".
 
 ## **Fuente de datos**
 
-+ [Dataset](https://drive.google.com/drive/folders/1b49OVFJpjPPA1noRBBi1hSmMThXmNzxn): La carpeta 'ratings' tiene varios archivos con las reseñas de los usuarios, la carpeta raíz tiene un dataset por proveedor de servicios de streaming.
-<br/>
+
 
 ## **Material de apoyo**
-
-Imagen Docker con Uvicorn/Guinicorn para aplicaciones web de alta performance:
-
-+ https://hub.docker.com/r/tiangolo/uvicorn-gunicorn-fastapi/ 
-
-+ https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker
-
-FAST API Documentation:
-
-+ https://fastapi.tiangolo.com/tutorial/
-  
- Gradio:
-  
-+ https://gradio.app/
-  
- Sistemas de Recomendación:
-  
-+ https://github.com/juliom86/awesome-RecSys
 
 "Prolijidad" del codigo:
 
 + https://pandas.pydata.org/docs/development/contributing_docstring.html
-  
 
-  
-<br/>
-
-## **Deadlines importantes**
-
-+ Apertura de formularios de entrega de proyectos: **Lunes 20, 10:00 hs gmt -3**
-
-+ Cierre de formularios de entrega de proyectos: **Martes 21, 16:00hs gmt-3**
-  
-+ Demo: **Martes 21, 16:00hs gmt-3*** 
-
-
+:bowtie:
