@@ -25,20 +25,29 @@ Además del análisis detallado de la exploración de los datos, estas son las d
 
 2. Implementar un modelo de regresión con aprendizaje supervisado que permita predecir el precio final de los vehículos, utilizando los datos que se han puesto a su disposición.
 
-## 2. Preparación de datos
+## 2. Metodología
+Para llevar a cabo este proyecto, se ha seguido la siguiente metodología:
+
+**Análisis exploratorio de datos**: se realizó una exploración detallada de los datos para entender las características de los vehículos en el mercado actual.
+
+**Preparación de datos**: se limpió y procesó los datos para poder ser utilizados en los modelos predictivos.
+
+**Modelamiento y evaluación**: se diseñaron dos modelos predictivos utilizando aprendizaje supervisado, uno para predecir el precio de los vehículos y otro para clasificar los vehículos en gama alta y gama baja.
+
+## 2. Análisis exploratorio de datos
 ### Descripción de los datos
-Los datos recopilados constan de información de 205 vehículos, incluyendo su precio de venta, características técnicas como la marca, modelo, año, tipo de combustible, capacidad de motor, entre otras. Los datos se han recopilado de varias fuentes en línea, y se han procesado para que sean coherentes y estén limpios. Los datos se encuentran en formato CSV, y se han almacenado en la carpeta "data".
+Los datos recopilados constan de información de 205 vehículos, incluyendo su precio de venta, características técnicas como la marca, modelo, año, tipo de combustible, capacidad de motor, entre otras. Los datos se han recopilado de varias fuentes en línea, y se han procesado para que sean coherentes y estén limpios. Los datos se encuentran en formato CSV, y se han almacenado en la carpeta "data".  
 
+## 3. Preparación de datos
 ### Procesamiento de datos
-Para poder utilizar los datos para nuestros análisis, se han realizado los siguientes procesos:
-
+Para poder utilizar los datos para nuestros análisis, se han realizado los siguientes procesos:  
 **Limpieza de datos**: se han eliminado las filas duplicadas y se han completado los valores faltantes.  
 **Selección de características**: se han seleccionado las características que se consideran relevantes para nuestros análisis.  
 **Codificación de características categóricas**: se han codificado las características categóricas en valores numéricos.  
 **Escalado de características**: se ha utilizado la técnica de escalado para normalizar las características numéricas.  
 Los datos limpios y procesados se han almacenado en la carpeta "processed_data".  
 
-## 3. Modelamiento y evaluación
+## 4. Modelamiento y evaluación
 **Modelos de aprendizaje automático**:
 Se han implementado dos modelos de aprendizaje supervisado para realizar las predicciones solicitadas por el cliente:
 
@@ -51,6 +60,13 @@ Se ha evaluado la precisión de los modelos utilizando la técnica de validació
 
 ### Resultados
 Los resultados de los modelos se han almacenado en la carpeta "results" en formato de texto plano, tal y como lo solicitó el cliente. También se han generado gráficos para visualizar los resultados de las predicciones.
+
+## Tecnologías utilizadas
+Las principales tecnologías utilizadas en este proyecto son:
+Python 3.0
+Pandas
+Numpy
+Scikit-learn
 
 ### Instrucciones para replicar el proyecto
 Para replicar el proyecto, se deben seguir los siguientes pasos:
@@ -72,5 +88,6 @@ Verificar que los resultados generados se encuentran en la carpeta "results".
 
 + https://pandas.pydata.org/docs/development/contributing_docstring.html
 
-contacto: takticflow
+## Autor
+Este proyecto fue desarrollado por TAKTICFLOW para HENRY.
 :bowtie:
